@@ -7,18 +7,41 @@ And those arrays contain as much values as you have squares in a row. the value 
 exemple : if side equals 2, the function chessboardGenerator will return [['white', 'black'],['black', 'white']] if side equals 3,
 the function chessboardGenerator will return [['white', 'black', 'white'], ['black', 'white', 'black'], ['white', 'black', 'white'],]*/
 
-function chessboardGenerator(number) {
-  const arrCol = [];
-  const color = ['white', 'black'];
-  for (let j = 0; j < number; j++) {
-    const arrLine = [];
-    for (let i = 0; i < number; i++) {
-      arrLine.push(color[i % 2]);
+function chessboardGenerator(n) {
+  const grid = [];
+  const colors = ['white', 'black'];
+  for (let j = 0; j < n; j++) {
+    const arrRow = [];
+    for (let i = 0; i < n; i++) {
+      arrRow.push(colors[i % 2]);
     }
-    color.reverse();
-    arrCol.push(arrLine);
+    colors.reverse();
+    grid.push(arrRow);
   }
-  return arrCol;
+  return grid;
 }
 
-console.log(chessboardGenerator(5));
+// TESTS
+
+console.log(chessboardGenerator(2));
+
+if (
+  chessboardGenerator(2).toString() == [['white', 'black'], ['black', 'white']]
+) {
+  console.log('Test Passed for 2');
+} else {
+  console.log('Test Failed for 2');
+}
+
+if (
+  chessboardGenerator(3).toString() ==
+  [
+    ['white', 'black', 'white'],
+    ['black', 'white', 'black'],
+    ['white', 'black', 'white']
+  ]
+) {
+  console.log('Test Passed for 3');
+} else {
+  console.log('Test Failed for 3');
+}
